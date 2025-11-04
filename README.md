@@ -6,6 +6,18 @@ Code used in CS1330: Introduction to Computer Networks
 
 This is a simple microservice that demonstrates HTTP GET and POST RESTful services without user authentication. It's designed for educational purposes to understand how RESTful APIs work.
 
+### Quick Start with Docker
+
+```bash
+# Clone and start
+git clone https://github.com/davidlislc/cs1330-intro-to-networks.git
+cd cs1330-intro-to-networks
+docker compose up
+
+# In another terminal, test the API
+curl http://localhost:3000/
+```
+
 ### Features
 
 - **No Authentication Required**: Simple demo without login/security
@@ -15,10 +27,63 @@ This is a simple microservice that demonstrates HTTP GET and POST RESTful servic
 
 ### Prerequisites
 
+**Option 1: Node.js (Native)**
 - Node.js (version 12 or higher)
 - npm (Node Package Manager)
 
-### Installation
+**Option 2: Docker (Recommended)**
+- Docker
+- Docker Compose
+
+### Installation & Running
+
+#### Option 1: Running with Docker Compose (Recommended)
+
+1. Clone the repository:
+```bash
+git clone https://github.com/davidlislc/cs1330-intro-to-networks.git
+cd cs1330-intro-to-networks
+```
+
+2. Start the service with Docker Compose:
+```bash
+docker-compose up
+```
+
+Or run in detached mode:
+```bash
+docker-compose up -d
+```
+
+3. Stop the service:
+```bash
+docker-compose down
+```
+
+The server will be available at `http://localhost:3000`.
+
+**Docker Compose Features:**
+- Automatic container build and startup
+- Port mapping (3000:3000)
+- Health checks for monitoring
+- Automatic restart on failure
+
+**Docker Compose Commands:**
+```bash
+# Start the service
+docker compose up
+
+# Start in detached mode (background)
+docker compose up -d
+
+# View logs
+docker compose logs -f
+
+# Stop the service
+docker compose down
+```
+
+#### Option 2: Running with Node.js
 
 1. Clone the repository:
 ```bash
@@ -31,9 +96,7 @@ cd cs1330-intro-to-networks
 npm install
 ```
 
-### Running the Server
-
-Start the server:
+3. Start the server:
 ```bash
 npm start
 ```
