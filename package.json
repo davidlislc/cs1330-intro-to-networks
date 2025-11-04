@@ -1,0 +1,22 @@
+{
+  "name": "cs1330-http-demo",
+  "version": "1.0.0",
+  "description": "A simple microservice demo for HTTP GET and POST RESTful services",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "http",
+    "microservice",
+    "demo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
