@@ -43,6 +43,15 @@ app.get('/items', (req, res) => {
 // GET a specific item by ID
 app.get('/items/:id', (req, res) => {
   const id = parseInt(req.params.id);
+  
+  // Validate that the ID is a valid positive integer
+  if (isNaN(id) || id <= 0 || !Number.isInteger(id)) {
+    return res.status(400).json({
+      success: false,
+      error: 'Invalid ID: must be a positive integer'
+    });
+  }
+  
   const item = items.find(i => i.id === id);
   
   if (!item) {
@@ -63,18 +72,19 @@ app.post('/items', (req, res) => {
   const { name, description } = req.body;
   
   // Validate input
-  if (!name || !description) {
+  if (!name || typeof name !== 'string' || name.trim() === '' ||
+      !description || typeof description !== 'string' || description.trim() === '') {
     return res.status(400).json({
       success: false,
-      error: 'Both name and description are required'
+      error: 'Both name and description are required and must be non-empty strings'
     });
   }
   
-  // Create new item
+  // Create new item (trim whitespace from inputs)
   const newItem = {
     id: nextId++,
-    name,
-    description
+    name: name.trim(),
+    description: description.trim()
   };
   
   items.push(newItem);
